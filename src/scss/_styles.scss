@@ -71,6 +71,19 @@
     height: auto;
 }
 
+.btn-outline-secondary {
+    background-color: $lightpurple;
+    color: #fff;
+    border-color: $lightpurple;
+
+    &:focus {
+        background-color: $lightpurple;
+        color: #fff;
+        border-color: $lightpurple;
+    }
+}
+
+
 li {
     list-style-type: none;
 }
