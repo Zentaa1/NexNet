@@ -8,11 +8,25 @@
     font-family: "Inter", sans-serif;
 }
 
+html {
+    min-height: 100vh;
+}
 
 body {
     background-color: $white;
     min-height: 100vh;
     overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+}
+
+footer {
+    height: 30vh;
+    flex-shrink: 0;
 }
 
 .custom-mt {
