@@ -1,5 +1,7 @@
 import { createPost } from './api/posts/createPost.js';
 import { getPosts } from './api/posts/getPosts.js';
+import formatDate from './functions/formatDate.js';
+import formatNumber from './functions/formatNumber.js';
 
 async function renderPosts() {
     try {
@@ -24,6 +26,11 @@ async function renderPosts() {
             postContainer.classList.add('bg-primary', 'container', 'rounded', 'mt-4', 'row', 'mx-auto');
             postSection.appendChild(postContainer);
 
+            const postLink = document.createElement('a');
+            postLink.setAttribute('href', `post/?id=${post.id}`);
+            postLink.setAttribute('data-post-index', post.id);
+            postContainer.appendChild(postLink);
+
             const postImage = document.createElement('i');
             postImage.classList.add('bi', 'bi-person-circle', 'col-md-1', 'fs-1', 'mt-2')
 
@@ -32,9 +39,9 @@ async function renderPosts() {
 
             const postHeaders = document.createElement('div');
 
-            postContainer.appendChild(postImage);
-            postContainer.appendChild(postContent);
-            postContainer.appendChild(postHeaders);
+            postLink.appendChild(postImage);
+            postLink.appendChild(postContent);
+            postLink.appendChild(postHeaders);
 
 
             const postTitle = document.createElement('h2');
@@ -52,12 +59,12 @@ async function renderPosts() {
             postBody.classList.add('text-primary')
             postBody.textContent = body;
 
-            postContainer.appendChild(postBody);
+            postLink.appendChild(postBody);
 
             const postReactions = document.createElement('div');
             postReactions.classList.add('d-flex', 'align-items-center');
 
-            postContainer.appendChild(postReactions);
+            postLink.appendChild(postReactions);
 
             const postLikes = document.createElement('i');
             postLikes.classList.add('bi', 'bi-hand-thumbs-up', 'text-primary');
@@ -85,41 +92,13 @@ async function renderPosts() {
     }
 }
 
-function formatDate(date) {
-    const now = new Date();
-    const diff = now - date;
-
-    const seconds = Math.floor(diff / 1000);
-    const minutes = Math.floor(seconds / 60);
-    const hours = Math.floor(minutes / 60);
-    const days = Math.floor(hours / 24);
-
-    if (days > 0) {
-        return `${days}d ago`;
-    } else if (hours > 0) {
-        return `${hours}h ago`;
-    } else if (minutes > 0) {
-        return `${minutes}min ago`;
-    } else {
-        return `${seconds}s ago`;
-    }
-}
-
-function formatNumber(number) {
-    if (number >= 1000) {
-        const roundedNumber = Math.round(number / 100) / 10; // Round to one decimal place
-        return `${roundedNumber}k`;
-    }
-    return number.toString(); // Return the number as is if it's less than 1000
-}
-
 
 document.addEventListener("DOMContentLoaded", function() {
     document.getElementById("createPostForm").addEventListener("submit", async function(event) {
         event.preventDefault();
 
-        const title = document.getElementById("postTitle").value; // Retrieve the value of the input with ID "postTitle"
-        const body = document.getElementById("postBody").value;   // Retrieve the value of the input with ID "postBody"
+        const title = document.getElementById("postTitle").value;
+        const body = document.getElementById("postBody").value;
 
         try {
             const response = await createPost(title, body);
