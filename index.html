@@ -27,16 +27,16 @@
                         <p>Need Help? Contact our support team at support@nexnet.com</p>
                     </div>
                 </div>
-                <div class="col-sm-12 col-md-5">
+                <div class="col-sm-12 col-md-5" id="loginCard">
                     <div class="card d-flex justify-content-center align-items-center">
                         <form action="feed/" class="row justify-content-center" id="loginForm">
                             <div class="col-11 mt-3 px-4">
-                                <input type="text" class="form-control" placeholder="Username" required>
+                                <input type="text" class="form-control" placeholder="E-mail" id="loginEmail" required>
                             </div>
                             <div class="col-11 mt-3 px-4">
                                 <div class="input-group">
-                                    <input type="password" class="form-control" id="password" placeholder="Password" minlength="8" required>
-                                    <button class="btn btn-outline-secondary" type="button" id="togglePassword">Show</button>
+                                    <input type="password" class="form-control" id="loginPassword" placeholder="Password" minlength="8" required>
+                                    <button class="btn btn-outline-secondary" type="button" id="toggleLoginPassword">Show</button>
                                 </div>
                             </div>
                             <div class="col-11 mt-3 px-4">
@@ -50,7 +50,37 @@
                             <p>Don't Have an account?</p>
                         </div>
                         <div class="col-md-5 mb-3">
-                            <button class="col-md-12 btn btn-sec">Register now</button>
+                            <button id="registerButton" class="col-md-12 btn btn-sec">Register now</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-5" id="registerCard" style="display:none">
+                    <div class="card d-flex justify-content-center align-items-center">
+                        <form action="feed/" class="row justify-content-center" id="registerForm">
+                            <div class="col-11 mt-3 px-4">
+                                <input id="registerName" type="text" class="form-control" placeholder="Username" required>
+                            </div>
+                            <div class="col-11 mt-3 px-4">
+                                <input id="registerMail" type="text" class="form-control" placeholder="E-mail" required>
+                            </div>
+                            <div class="col-11 mt-3 px-4">
+                                <div class="input-group">
+                                    <input type="password" class="form-control" id="registerPassword" placeholder="Password" minlength="8" required>
+                                    <button class="btn btn-outline-secondary" type="button" id="toggleRegisterPassword">Show</button>
+                                </div>
+                            </div>
+                            <div class="col-11 mt-3 px-4">
+                                <button class="col-12 btn btn-primary">Register</button>
+                            </div>
+                        </form>
+                        <div>
+                            <p class="fs-6">Forgot your password?</p>
+                        </div>
+                        <div class="mt-2">
+                            <p>Already have an account?</p>
+                        </div>
+                        <div class="col-md-5 mb-3">
+                            <button class="col-md-12 btn btn-sec" id="backToLogin">Log in</button>
                         </div>
                     </div>
                 </div>
@@ -60,6 +90,6 @@
     <footer  class="footer d-flex justify-content-center align-items-center bg-light">
             <p>© 2024 NexNet</p>
     </footer>
-    <script src="/src/js/login.js"></script>
+    <script type="module" src="src/js/auth.js"></script>
 </body>
 </html>
