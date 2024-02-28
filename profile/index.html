@@ -30,7 +30,7 @@
                             </li>
                             
                             <li>
-                                <a href="#" class="nav-link py-3 px-2" data-bs-toggle="tooltip" data-bs-placement="right" title="Profile" data-bs-template='<div class="tooltip" role="tooltip"><div class="tooltip-inner"></div></div>'>
+                                <a href="#" id="profileLink" class="nav-link py-3 px-2" data-bs-toggle="tooltip" data-bs-placement="right" title="Profile" data-bs-template='<div class="tooltip" role="tooltip"><div class="tooltip-inner"></div></div>'>
                                     <i class="bi bi-person-circle fs-1"></i>
                                 </a>
                             </li>
@@ -48,40 +48,12 @@
                     </div>
                 </nav>
             </header>
-            <section class="col-sm p-3 min-vh-100 container">
+            <section class="col-sm p-3 min-vh-100 container" id="mainContent">
                 <div class="row center-content">
-                    <div class="col-md-8 col-sm-12 offset-md-2 row mt-5 bg-primary rounded justify-content-center  mx-auto">
-                        <div class="col-md-5 mt-5">
-                            <svg class="profile-picture" xmlns="http://www.w3.org/2000/svg" width="240" height="240" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
-                                <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
-                                <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1"/>
-                              </svg>
-                        </div>
-                        <div class="col-md-4">
-                            <h1 class="fs-2 text-purple mt-5">Marius Bjeglerud</h1>
-                            <div class="row flex-md-row flex-column-reverse">
-                                <ul class="col-md-12 col-4">
-                                    <li class="fw-bold">Posts</li>
-                                    <li>1</li>
-                                </ul>
-                                <ul class="col-md-12 col-lg-4">
-                                    <li class="fw-bold">Followers</li>
-                                    <li>12</li>
-                                </ul>
-                                <ul class="col-md-12 col-lg-4">
-                                    <li class="fw-bold">Following</li>
-                                    <li>285</li>
-                                </ul>
-                            </div>
-                            <p class="mt-3">This is a short description</p>
-                        </div>                                               
-                        <div class="col-md-11 mt-5 mb-5">
-                            <button class="col-12 btn btn-primary fw-bold fs-5">Follow</button>
-                            <button class="col-12 mt-3 btn btn-sec fw-bold fs-5">Add as Friend</button>
-                        </div>                        
+                    <div id="profileContainer" class="col-md-8 col-sm-12 offset-md-2 row mt-5 bg-primary rounded justify-content-center  mx-auto">                    
                     </div>
                 </div>
-                <div class="row center-content">
+                <div class="row center-content" id="mainContent">
                     <div class="col-md-8 col-sm-12 offset-md-2 row bg-primary rounded justify-content-center mt-4  mx-auto">
                         <div class=" container rounded mt-4 row">
                             <i class="bi bi-person-circle col-md-1 fs-1 mt-2"></i>
@@ -104,12 +76,32 @@
                     </div>
                 </div>
             </section>
+            <div id="editContainer" class="fixed-box col-md-8 col-sm-12 offset-md-2 row bg-primary rounded justify-content-center mt-4  mx-auto d-none">
+                <button id="closeButton" class="btn-close" aria-label="Close"></button>
+                <form id="profileForm">
+                    <h2>Edit Profile</h2>
+                    <div class="mb-3">
+                        <label for="bioInput" class="form-label">Bio</label>
+                        <input type="text" class="form-control" id="bioInput" placeholder="Enter your bio">
+                    </div>
+                    <div class="mb-3">
+                        <label for="bannerInput" class="form-label">Banner</label>
+                        <input type="text" class="form-control" id="bannerInput" placeholder="Enter your banner URL">
+                    </div>
+                    <div class="mb-3">
+                        <label for="avatarInput" class="form-label">Avatar</label>
+                        <input type="text" class="form-control" id="avatarInput" placeholder="Enter your avatar URL">
+                    </div>
+                    <button id="profileFormBtn" type="submit" class="btn btn-primary">Save</button>
+                </form>
+            </div>            
             <footer  class="footer d-flex justify-content-center align-items-center bg-light">
                 <p>© 2024 NexNet</p>
             </footer>
             </div>
         </div>
     </div>
-    <script src="../src/js/sidebar.js"></script>
+    <script type="module" src="../src/js/sidebar.js"></script>
+    <script type="module" src="../src/js/profile.js"></script>
 </body>
 </html>

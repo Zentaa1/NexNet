@@ -30,7 +30,7 @@
                             </li>
                             
                             <li>
-                                <a href="../profile/" class="nav-link py-3 px-2" data-bs-toggle="tooltip" data-bs-placement="right" title="Profile" data-bs-template='<div class="tooltip" role="tooltip"><div class="tooltip-inner"></div></div>'>
+                                <a href="../profile/" id="profileLink" class="nav-link py-3 px-2" data-bs-toggle="tooltip" data-bs-placement="right" title="Profile" data-bs-template='<div class="tooltip" role="tooltip"><div class="tooltip-inner"></div></div>'>
                                     <i class="bi bi-person-circle fs-1"></i>
                                 </a>
                             </li>
@@ -70,12 +70,50 @@
                                 <i class="bi bi-person-circle col-md-1 fs-1"></i>
                                 <form id="createPostForm" class="row align-items-start py-2 px-2">
                                     <div class="col-md-11">
-                                        <input class="form-control mb-2" type="text" name="" id="postTitle" placeholder="Title..."> 
-                                        <input class="form-control mb-2" type="text" name="" id="postBody" placeholder="What do you want to share today?">
+                                        <input class="form-control mb-2" type="text" name="" id="newPostTitle" placeholder="Title..."> 
+                                        <input class="form-control mb-2" type="text" name="" id="newPostBody" placeholder="What do you want to share today?">
                                         <button class="btn btn-3" type="submit">Post</button>
                                     </div>
                                 </form>                                
                             </div>
+                            <div id="postTemplate" class="post-template bg-primary container rounded mt-4 row mx-auto post d-none">
+                                <div class="col-md-11 column align-items-start py-2 px-2">
+                                    <div class="row col-md-12 align-items-center">
+                                        <div class="author-info">
+                                            <img class="fs-1 rounded-circle post-avatar" src="" alt="">
+                                        </div>
+                                        <div class="col-sm-5">
+                                            <a href="">
+                                                <p class="fs-6 m-auto text-purple post-author fw-bold">Author Name</p>
+                                                <p class="fs-6 m-auto text-primary post-date">Date</p>
+                                            </a>
+                                        </div>
+                                    </div>                                    
+                                    <a class="post-link" href="" data-post-index="">
+                                        <h2 class="fs-4 mt-4 text-purple post-title"></h2>
+                                        <p class="text-primary post-body"></p>
+                                        <img class="post-image" src="" alt="">
+                                        <p class="text-primary post-tags"></p>
+                                    </a>
+                                </div>
+                                <div class="d-flex align-items-center post-reactions mb-2">
+                                    <i class="bi bi-hand-thumbs-up text-primary"></i>
+                                    <p class="my-0 mx-2 text-purple post-likes"></p>
+                                    <i class="bi bi-chat text-primary"></i>
+                                    <p class="my-0 mx-2 text-purple post-comments"></p>
+                                    <div class="align-flex-end d-flex post-del-update">
+                                        <button class="edit-button btn btn-primary d-none">Edit</button>
+                                        <button class="delete-button btn btn-sec d-none">Delete</button>
+                                    </div>
+                                </div>
+                                <div class="edit-form d-none">
+                                    <form class="edit-form" id="editForm" action="submit">
+                                        <input class="form-control mb-2 mt-3 update-post-title" type="text" placeholder="Title...">
+                                        <input class="form-control mb-2 update-post-body" type="text" placeholder="Body...">
+                                        <button class="btn btn-3 mb-2">Update</button>
+                                    </form>
+                                </div>
+                            </div>                            
                             </div>
                         </div>
                     </div>
@@ -86,7 +124,7 @@
             </footer>
         </div>
     </div>
-    <script src="../src/js/sidebar.js"></script>
-    <script type="module" src="../src/js/feed.js"></script>
+    <script type="module" src="../src/js/sidebar.js"></script>
+    <script type="module" src="../src/js/pages/feed/index.js"></script>
 </body>
 </html>

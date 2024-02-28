@@ -5,3 +5,4 @@ export const NN_AUTH = "/auth";
 export const NN_REGISTER = "/register";
 export const NN_LOGIN = "/login";
 export const NN_POSTS = "/social/posts";
+export const NN_PROFILE = "/social/profiles/";

@@ -18,9 +18,9 @@
     color: $gray;
 
     &:hover {
-        background-color: $darkpurple;
+        background-color: $main;
         border-color: $darkpurple;
-        color: $white;
+        color: $gray;
     }
 }
 
@@ -30,7 +30,7 @@
     color: $white;
 
     &:hover {
-        background-color: $lightpurple;
+        background-color: $main;
         border-color: $lightpurple;
         color: $gray;
     }

@@ -1,8 +1,10 @@
 import { API_KEY, NN_BASE, NN_POSTS } from "../constants.js";
 import { load } from "../storage/load.js";
 
-export async function getPosts() {
-    const response = await fetch(NN_BASE + NN_POSTS, {
+export async function getPosts(includeAuthor = true) {
+    const queryParams = new URLSearchParams();
+    if (includeAuthor) queryParams.append('_author', includeAuthor);
+    const response = await fetch(`${NN_BASE}${NN_POSTS}?${queryParams}`, {
         headers: {
             Authorization: `Bearer ${load("token")}`,
             "X-Noroff-API-Key": API_KEY
@@ -11,7 +13,6 @@ export async function getPosts() {
 
     if (response.ok) {
         const responseData = await response.json();
-        console.log(responseData);
         return responseData;
     }
 

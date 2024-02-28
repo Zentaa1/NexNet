@@ -1,9 +1,11 @@
-import { createPost } from './api/posts/createPost.js';
+/*import { createPost } from './api/posts/createPost.js';
 import { getPosts } from './api/posts/getPosts.js';
+import deletePost from './functions/deletePost.js';
 import formatDate from './functions/formatDate.js';
 import formatNumber from './functions/formatNumber.js';
+import updatePost from './functions/updatePost.js';
 
-async function renderPosts() {
+export async function renderPosts() {
     try {
         const posts = await getPosts();
         console.log(posts);
@@ -12,6 +14,10 @@ async function renderPosts() {
         posts.data.forEach(post => {
             const title = post.title;
             const body = post.body;
+
+            const postId = post.id;
+
+            const author = post.author.name;
 
             const likes = post._count.reactions;
             const formattedLikes = formatNumber(likes);
@@ -31,16 +37,24 @@ async function renderPosts() {
             postLink.setAttribute('data-post-index', post.id);
             postContainer.appendChild(postLink);
 
+            const postHeaders = document.createElement('div');
+            postHeaders.classList.add('col-md-11', 'column', 'align-items-start', 'py-2', 'px2')
+
             const postImage = document.createElement('i');
             postImage.classList.add('bi', 'bi-person-circle', 'col-md-1', 'fs-1', 'mt-2')
 
-            const postContent = document.createElement('div');
-            postContent.classList.add('col-md-11', 'row', 'align-items-start', 'py-2', 'px2')
+            const postAuthor = document.createElement('a');
+            postAuthor.classList.add('mx-2', 'fs-6', 'text-purple');
+            postAuthor.textContent = author;
 
-            const postHeaders = document.createElement('div');
+            const postDate = document.createElement('p');
+            postDate.classList.add('fs-6', 'text-purple');
+            postDate.textContent = formattedDate;
 
-            postLink.appendChild(postImage);
-            postLink.appendChild(postContent);
+            postHeaders.appendChild(postImage);
+            postHeaders.appendChild(postAuthor);
+            postHeaders.appendChild(postDate);
+
             postLink.appendChild(postHeaders);
 
 
@@ -48,12 +62,7 @@ async function renderPosts() {
             postTitle.classList.add('fs-4', 'mb-0', 'text-purple');
             postTitle.textContent = title;
 
-            const postDate = document.createElement('p');
-            postDate.classList.add('mt-0', 'fs-6', 'text-purple');
-            postDate.textContent = formattedDate;
-
-            postHeaders.appendChild(postTitle);
-            postHeaders.appendChild(postDate);
+            postLink.appendChild(postTitle);
 
             const postBody = document.createElement('p');
             postBody.classList.add('text-primary')
@@ -64,7 +73,7 @@ async function renderPosts() {
             const postReactions = document.createElement('div');
             postReactions.classList.add('d-flex', 'align-items-center');
 
-            postLink.appendChild(postReactions);
+            postContainer.appendChild(postReactions);
 
             const postLikes = document.createElement('i');
             postLikes.classList.add('bi', 'bi-hand-thumbs-up', 'text-primary');
@@ -80,10 +89,18 @@ async function renderPosts() {
             postCommentsValue.classList.add('my-0', 'mx-0', 'text-purple');
             postCommentsValue.textContent = formattedComments;
 
+            const postDelUpdate = document.createElement('div');
+            postDelUpdate.classList.add('align-flex-end', 'd-flex');
+            
             postReactions.appendChild(postLikes);
             postReactions.appendChild(postLikesValue);
             postReactions.appendChild(postComments);
             postReactions.appendChild(postCommentsValue);
+            postReactions.appendChild(postDelUpdate);
+
+            updatePost(author, postDelUpdate, postContainer, postId);
+            deletePost(author, postDelUpdate, postId);
+
 
         });
 
@@ -106,6 +123,8 @@ document.addEventListener("DOMContentLoaded", function() {
             console.log('Post Created Successfully!', response);
             alert('successfully created a post!');
 
+            window.location.reload();
+
         } catch (error) {
             console.error('There was a problem creating the post!', error.message);
             alert('Failed to create the post, please try again later or contact support!')
@@ -113,5 +132,4 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 });
 
-
-renderPosts();
+renderPosts();*/

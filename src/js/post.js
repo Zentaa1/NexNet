@@ -1,8 +1,12 @@
-// post.js
-
+import { createComment } from './api/posts/comments/createComment.js';
 import { getSinglePost } from './api/posts/getSinglePost.js';
+import deletePost from './functions/deletePost.js';
 import formatDate from './functions/formatDate.js';
 import formatNumber from './functions/formatNumber.js';
+import updatePost from './functions/updatePost.js';
+
+
+
 
 document.addEventListener("DOMContentLoaded", async function() {
     try {
@@ -11,6 +15,7 @@ document.addEventListener("DOMContentLoaded", async function() {
 
         const post = await getSinglePost(postId);
 
+        const author = post.data.author.name;
 
         const title = post.data.title;
         const body = post.data.body;
@@ -78,21 +83,42 @@ document.addEventListener("DOMContentLoaded", async function() {
         postCommentsValue.classList.add('my-0', 'mx-0', 'text-purple');
         postCommentsValue.textContent = formattedComments;
 
+        const postDelUpdate = document.createElement('div');
+            postDelUpdate.classList.add('align-flex-end', 'd-flex');
+
         postReactions.appendChild(postLikes);
         postReactions.appendChild(postLikesValue);
         postReactions.appendChild(postComments);
         postReactions.appendChild(postCommentsValue);
+        postReactions.appendChild(postDelUpdate);
 
-        const commentSection = document.createElement('div');
-        postContainer.appendChild(commentSection)
+        updatePost(author, postDelUpdate, postContainer, postId);
+        deletePost(author, postDelUpdate, postId);
 
-        const commentH2 = document.createElement('h2');
-        commentH2.classList.add('fs-4', 'mb-0', 'text-primary', 'mb-4');
-        commentH2.textContent = 'Comment section';
-
-        commentSection.appendChild(commentH2);
-
+        const commentSection = document.getElementById('commentContainer');        
         const comments = post.data.comments;
+
+        document.getElementById("createCommentForm").addEventListener("submit", async function(event) {
+            event.preventDefault();
+        
+            const commentBody = document.getElementById("commentBody").value;
+        
+            const urlParams = new URLSearchParams(window.location.search);
+            const postId = urlParams.get('id');
+        
+            try {
+                const response = await createComment(postId, commentBody);
+        
+                console.log("Posted comment!", response);
+                alert('Comment was posted!');
+
+                window.location.reload();
+            } catch (error) {
+                console.error('There was a problem posting the comment!', error.message);
+                alert('Failed to post the comment, please try again later or contact support!')
+            }
+        });
+        
 
         comments.forEach(comment => {
 

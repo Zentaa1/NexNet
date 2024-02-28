@@ -37,9 +37,9 @@
   color: #333333;
 }
 .btn-primary:hover {
-  background-color: #6C3483;
+  background-color: #E6E6FA;
   border-color: #6C3483;
-  color: #ffffff;
+  color: #333333;
 }
 
 .btn-sec {
@@ -48,7 +48,7 @@
   color: #ffffff;
 }
 .btn-sec:hover {
-  background-color: #AF7AC5;
+  background-color: #E6E6FA;
   border-color: #AF7AC5;
   color: #333333;
 }
@@ -98,6 +98,22 @@
 
 li {
   list-style-type: none;
+}
+
+@media (min-width: 1250px) {
+  .col-md-12 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+}
+.post-avatar {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+}
+
+.author-info {
+  width: 60px;
 }
 
 * {
@@ -187,6 +203,21 @@ footer {
 
 .back {
   transform: rotateY(180deg);
+}
+
+.fixed-box {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.fixed-box form {
+  width: 300px;
 }
 
 /*# sourceMappingURL=main.css.map */

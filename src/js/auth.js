@@ -1,5 +1,6 @@
 import { login } from './api/login.js';
 import { registerUser } from './api/registerUser.js'; 
+import { validateEmail, validatePassword } from './functions/formValidation.js';
 
 document.addEventListener("DOMContentLoaded", function() {
     document.getElementById("registerButton").addEventListener("click", function() {
@@ -21,15 +22,25 @@ document.addEventListener("DOMContentLoaded", function() {
        const email = document.getElementById("registerMail").value;
        const password = document.getElementById("registerPassword").value;
 
-       try {
-        const response = await registerUser(username, email, password);
+       if (!validateEmail(email)) {
+           alert('Please enter a valid email address (@noroff.no or @stud.noroff.no)');
+           return;
+       }
 
-        console.log('registration successful', response);
-        alert('Registration successful!');
+       if (!validatePassword(password)) {
+           alert('Password must be at least 8 characters long and contain at least one number, uppercase letter, and special character.');
+           return;
+       }
+
+       try {
+           const response = await registerUser(username, email, password);
+
+           console.log('registration successful', response);
+           alert('Registration successful!');
        
        } catch (error) {
-        console.error('There was a problem with registration', error.message);
-        alert('Registration failed. Please try again or contact Marius')
+           console.error('There was a problem with registration', error.message);
+           alert('Registration failed. Please try again or contact Marius');
        }
     });
 });
