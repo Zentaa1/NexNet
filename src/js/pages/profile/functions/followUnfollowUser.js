@@ -1,15 +1,13 @@
-import { followProfile } from "../api/profile/followProfile.js"
-import { unfollowProfile } from "../api/profile/unfollowProfile.js";
-import { load } from "../api/storage/load.js";
+import { load } from "../../../api/storage/load.js";
+import { unfollowProfile } from "../../../api/profile/unfollowProfile.js"
+import { followProfile } from "../../../api/profile/followProfile.js"
+
 
 export async function followUnfollowProfile(profileName, followButton, followers) {
 
     const ownProfile = load("profile");
 
-    console.log(ownProfile.name);
-
     const followerNames = followers.map(follower => follower.name);
-    console.log(followerNames);
 
     if (followerNames.includes(ownProfile.name)) {
         followButton.textContent = "Unfollow";

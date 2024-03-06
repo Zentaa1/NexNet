@@ -1,5 +1,4 @@
-import { editProfile } from "../api/profile/editProfile.js";
-import { getProfile } from "../api/profile/getProfile.js";
+import { editProfile } from "../../../api/profile/editProfile.js";
 
 export async function updateProfileData(profileName, editProfileButton) {
     const editProfileContainer = document.getElementById('editContainer');

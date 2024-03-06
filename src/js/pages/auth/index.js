@@ -1,6 +1,7 @@
-import { login } from './api/login.js';
-import { registerUser } from './api/registerUser.js'; 
-import { validateEmail, validatePassword } from './functions/formValidation.js';
+import { login } from "../../api/login.js";
+import { registerUser } from "../../api/registerUser.js";
+import { validateEmail, validatePassword } from "./functions/formValidation.js";
+
 
 document.addEventListener("DOMContentLoaded", function() {
     document.getElementById("registerButton").addEventListener("click", function() {

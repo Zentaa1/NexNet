@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     return;
                 }
 
-                const profileURL = `../profile/?name=${encodeURIComponent(profileData.name)}`;
+                const profileURL = `../../profile/?name=${encodeURIComponent(profileData.name)}`;
                 profileLink.setAttribute('href', profileURL);
                 profileLink.setAttribute('data-post-index', profileData.name);
                 

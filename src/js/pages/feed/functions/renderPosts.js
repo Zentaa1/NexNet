@@ -1,13 +1,16 @@
-import { getPosts } from "../../../api/posts/getPosts.js";
-import formatDate from "../../../functions/formatDate.js";
-import formatNumber from "../../../functions/formatNumber.js";
+import { filterOptions } from "../../../components/Filters/filters.js";
+import { addReaction } from "../../post/functions/addReaction.js";
+import formatDate from "./formatDate.js";
+import formatNumber from "./formatNumber.js";
 import { updDelButtons } from "./updDelButtons.js";
 
-export async function renderPosts() {
+export async function renderPosts(posts) {
     try {
-        const posts = await getPosts();
         const postContainer = document.getElementById('postContainer');
         const postTemplate = document.getElementById('postTemplate');
+
+        postContainer.innerHTML = "";
+
 
         posts.data.forEach(post => {
             const newPost = postTemplate.cloneNode(true);
@@ -18,11 +21,14 @@ export async function renderPosts() {
             const profileName = post.author.name;
             const postId = post.id;
 
-            
+            const authorLink = newPost.querySelector('.author-link');
+            authorLink.setAttribute('href', `../profile/?name=${profileName}`);
+            authorLink.setAttribute('data-post-name', profileName);
 
             const postLink = newPost.querySelector('.post-link');
             postLink.setAttribute('href', `post/?id=${post.id}`);
             postLink.setAttribute('data-post-index', post.id);
+
 
             newPost.querySelector('.post-avatar').src = post.author.avatar.url;
             newPost.querySelector('.post-author').textContent = post.author.name;
@@ -34,7 +40,10 @@ export async function renderPosts() {
 
             postContainer.appendChild(newPost);
 
-            updDelButtons(profileName, newPost, postId)
+            updDelButtons(profileName, newPost, postId);
+            addReaction(post, newPost);
+
+            
         });
     } catch (error) {
         console.error('Error rendering posts:', error);

@@ -1,6 +1,6 @@
 import { getSinglePost } from "../../../api/posts/getSinglePost.js";
-import formatDate from "../../../functions/formatDate.js";
-import formatNumber from "../../../functions/formatNumber.js";
+import formatDate from "../../feed/functions/formatDate.js";
+import formatNumber from "../../feed/functions/formatNumber.js";
 import { updDelButtons } from "../../feed/functions/updDelButtons.js";
 import { addComment } from "./addComment.js";
 import { renderComments } from "./renderComments.js";
@@ -20,6 +20,10 @@ export async function renderPost() {
         const totalComments = post.data._count.comments;
 
         const comments = post.data.comments;
+
+        const authorLink = document.getElementById('authorLink');
+        authorLink.setAttribute('href', `../../profile/?name=${profileName}`);
+        authorLink.setAttribute('data-post-name', profileName);
 
         document.getElementById('postAvatar').src = post.data.author.avatar.url;
         document.getElementById('postAuthor').textContent = post.data.author.name;

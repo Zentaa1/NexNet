@@ -1,4 +1,4 @@
-import formatDate from "../../../functions/formatDate.js";
+import formatDate from "../../feed/functions/formatDate.js";
 
 export async function renderComments(comments) {
     try {
