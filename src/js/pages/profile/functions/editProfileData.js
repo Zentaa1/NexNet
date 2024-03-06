@@ -20,7 +20,6 @@ export async function updateProfileData(profileName, editProfileButton) {
 
         try {
             await editProfile(profileName, { bio: bio, bannerUrl: bannerUrl, avatarUrl: avatarUrl });
-            console.log('Updated profile successfully!');
 
             editProfileContainer.classList.add('d-none');
             otherContent.style.opacity = '1';
@@ -38,5 +37,4 @@ export async function updateProfileData(profileName, editProfileButton) {
         otherContent.style.opacity = '1';
     });
 
-    console.log(profileName);
 }

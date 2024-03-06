@@ -1,6 +1,6 @@
 import { API_KEY, NN_BASE, NN_PROFILE } from "../constants.js";
 import { load } from "../storage/load.js";
-import { getProfile } from "./getProfile.js";
+import { renderProfile } from "../../pages/profile/functions/renderProfile.js";
 
 export async function editProfile(profileName, options) {
     const requestBody = {};
@@ -17,8 +17,6 @@ export async function editProfile(profileName, options) {
         requestBody.avatar = { url: options.avatarUrl };
     }
 
-    console.log(requestBody);
-
     const response = await fetch(`${NN_BASE}${NN_PROFILE}${profileName}`, {
         headers: {
             Authorization: `Bearer ${load("token")}`,
@@ -31,6 +29,7 @@ export async function editProfile(profileName, options) {
 
     if (response.ok) {
         const responseData = await response.json();
+        renderProfile();
         return responseData;
     } else {
         throw new Error("Failed to update profile" + response.statusText);

@@ -40,7 +40,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="../" class="nav-link py-3 px-2" data-bs-toggle="tooltip" data-bs-placement="right" title="Log Out" data-bs-template='<div class="tooltip" role="tooltip"><div class="tooltip-inner"></div></div>'>
+                                <a id="logOutBtn" href="../" class="nav-link py-3 px-2" data-bs-toggle="tooltip" data-bs-placement="right" title="Log Out" data-bs-template='<div class="tooltip" role="tooltip"><div class="tooltip-inner"></div></div>'>
                                     <i class="bi bi-box-arrow-left fs-1"></i>
                                 </a>
                             </li>
@@ -121,9 +121,9 @@
                                             <p class="my-0 mx-2 text-purple post-likes"></p>
                                             <i class="bi bi-chat text-primary"></i>
                                             <p class="my-0 mx-2 text-purple post-comments"></p>
-                                            <div class="align-flex-end d-flex post-del-update">
-                                                <button class="edit-button btn btn-primary d-none">Edit</button>
-                                                <button class="delete-button btn btn-sec d-none">Delete</button>
+                                            <div class="d-flex post-del-update">
+                                                <a class="edit-button btn btn-primary d-none">Edit</a>
+                                                <a class="delete-button btn btn-sec d-none">Delete</a>
                                             </div>
                                         </div>
                                         <div class="edit-form d-none">

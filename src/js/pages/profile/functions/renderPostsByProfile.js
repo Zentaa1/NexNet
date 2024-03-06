@@ -33,9 +33,6 @@ export async function renderPostsByProfile(profileName, profileData) {
             postContainer.appendChild(profilePost);
         })
 
-        console.log(posts);
-        console.log(profileData);
-
 
     } catch (error) {
         console.error('error rendering posts by user', error);

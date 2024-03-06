@@ -35,7 +35,7 @@ export async function renderPost() {
 
         updDelButtons(profileName, document, postId)
         addComment(postId);
-        renderComments(comments);
+        renderComments(comments, postId);
 
         console.log(post);
     } catch (error) {

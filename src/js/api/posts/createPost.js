@@ -1,3 +1,4 @@
+import { renderPosts } from "../../pages/feed/functions/renderPosts.js";
 import { API_KEY, NN_BASE, NN_POSTS } from "../constants.js";
 import { load } from "../storage/load.js";
 

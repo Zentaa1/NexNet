@@ -1,5 +1,6 @@
 import { login } from "../../api/login.js";
 import { registerUser } from "../../api/registerUser.js";
+import { load } from "../../api/storage/load.js";
 import { validateEmail, validatePassword } from "./functions/formValidation.js";
 
 
@@ -66,3 +67,9 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 });
+
+const profile = load("profile");
+
+if (profile) {
+    window.location.href = 'feed/';
+}

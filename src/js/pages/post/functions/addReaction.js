@@ -1,10 +1,8 @@
-import { getPosts } from "../../../api/posts/getPosts.js";
 import { reactToPost } from "../../../api/posts/reactions/reactToPost.js";
 import { load } from "../../../api/storage/load.js";
 
 export async function addReaction(post, newPost) {
     try {
-        console.log(post);
         const reactButton = newPost.querySelector('.post-reaction');
         const unReactButton = newPost.querySelector('.post-reaction-liked');
         const ownProfile = load("profile");
@@ -12,17 +10,11 @@ export async function addReaction(post, newPost) {
         const postId = post.id;
     
         if (post.reactions && post.reactions.length > 0 && post.reactions[0].reactors) {
-            const reactors = post.reactions[0].reactors;
-    
-            const reactorNames = reactors.map(reactor => reactor);
-
-            console.log('Reactor names:', reactorNames);
+            const reactorNames = post.reactions[0].reactors.map(reactor => reactor);
     
             if (reactorNames.includes(ownProfile.name)) {
                 unReactButton.classList.remove('d-none');
                 reactButton.classList.add('d-none');
-    
-                console.log('You already liked this post!');
     
                 unReactButton.addEventListener('click', async (e) => {
                     unReactButton.classList.add('d-none');
@@ -37,7 +29,6 @@ export async function addReaction(post, newPost) {
                     unReactButton.classList.remove('d-none');
                     reactButton.classList.add('d-none');
                     reactToPost(postId);
-
                 });
             }
         } else {
@@ -48,8 +39,7 @@ export async function addReaction(post, newPost) {
             reactButton.addEventListener('click', async (e) => {
                 unReactButton.classList.remove('d-none');
                 reactButton.classList.add('d-none');
-                await reactToPost(postId);
-                console.log(post)
+                reactToPost(postId);
             });
         }
     } catch(error) {
