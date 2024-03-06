@@ -5,6 +5,22 @@
  * @param {string} password - The password of the user.
  * @returns {Promise<Object>} The user profile information.
  * @throws {Error} If login fails.
+ * @example
+ * //Example usage
+ * try {
+ *      // Hardcoded user for the example.
+ *      const email = "marius@stud.noroff.no";
+ *      const password = "Password123!";
+ * 
+ *      // Passes trough the email and password to the login function.
+ *      login(email, password);
+ * 
+ *      // Console Logs if the login was successful.
+ *      console.log("login successfully!")
+ * } catch (error) {
+ *      // Catches a error and logs it if the function fails.
+ *      console.error("login failed", error.message);
+ * }
  */
 export async function login(email, password) {
     try {
