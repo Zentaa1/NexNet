@@ -37,7 +37,6 @@ export async function renderPost() {
         addComment(postId);
         renderComments(comments, postId);
 
-        console.log(post);
     } catch (error) {
         console.error('could not load this post right now' + error.message);
     }

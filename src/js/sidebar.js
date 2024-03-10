@@ -16,7 +16,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
             try {
                 const profileData = await load("profile");
-                console.log(profileData);
 
                 if (!profileData.name) {
                     console.error("Profile data is missing 'name' property.");

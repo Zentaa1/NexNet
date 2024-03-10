@@ -16,7 +16,6 @@ export async function getSinglePost(postId, includeAuthor = true, includeComment
 
     if (response.ok) {
         const responseData = await response.json();
-        console.log(responseData);
         return responseData;
     }
 

@@ -37,7 +37,6 @@ document.addEventListener("DOMContentLoaded", function() {
        try {
            const response = await registerUser(username, email, password);
 
-           console.log('registration successful', response);
            alert('Registration successful!');
        
        } catch (error) {
